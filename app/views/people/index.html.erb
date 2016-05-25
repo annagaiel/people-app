@@ -4,8 +4,10 @@
   <div ng-controller="peopleCtrl">
     <ul>
       <li ng-repeat="person in people track by $index" ng-click="toggleBio(person)">
-        <h2>{{$index + 1}} {{ person.name }}</h2>
-        <div ng-if="person.bioVisible" >
+        <h2 ng-class="{strike: person.bioVisible}">
+          {{$index + 1}} {{ person.name }}
+        </h2>
+        <div ng-if="person.bioVisible">
           {{ person.bio }}
         </div>
         <a href="#" ng-click="deleteMe($index)">delete</a>
