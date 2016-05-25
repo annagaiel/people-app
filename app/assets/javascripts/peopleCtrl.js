@@ -1,25 +1,14 @@
 (function(){
   "use Strict"
   angular.module("app").controller("peopleCtrl",
-    function($scope){
+    function($scope, $http){
 
-      $scope.people = [
-        {
-          name: "Anna",
-          bio: "Wonderful person",
-          bioVisible: false
-        },
-        {
-          name: "Mary",
-          bio: "Graceful person",
-          bioVisible: false
-        },
-        {
-          name: "Sally",
-          bio: "Funny person",
-          bioVisible: false
-        }
-      ]
+      $scope.people = [];
+      $scope.setup = function(){
+        $http.get("/api/v1/people.json").then(function(response){
+          $scope.people = response.data;
+        });
+      }
 
       $scope.toggleBio = function(person){
         person.bioVisible = !person.bioVisible

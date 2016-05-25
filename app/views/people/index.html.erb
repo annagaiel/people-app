@@ -1,7 +1,7 @@
 <h1>People App</h1>
 
 <div ng-app="app">
-  <div ng-controller="peopleCtrl">
+  <div ng-controller="peopleCtrl" ng-init="setup()">
     <ul>
       <li ng-repeat="person in people track by $index" ng-click="toggleBio(person)">
         <h2 ng-class="{strike: person.bioVisible}">
